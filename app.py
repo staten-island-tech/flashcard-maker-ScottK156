@@ -8,23 +8,38 @@ class flash_cards:
         return {"question":self.question,"answer":self.answer}
     def display(self):
         return f"{self.question} {self.answer}"
-my_card = flash_cards("science","hello")
-print(my_card.display())
 
-try:
-    with open("FlashCards.json", "r") as file:
-        cards_data = json.load(file)
-except FileNotFoundError:
-    cards_data = []
 
-# Append new car
-cards_data.append(my_card.to_dict())
+mode = input("What mode would you like to use?")
+if mode.lower() == "teacher":
+    while True:
 
-# Save updated data back to file
-with open("FlashCards.json", "w") as file:
-    json.dump(cards_data, file, indent=4)
+        question = input("Give me the Flashcard word ")
+        answer =input("Give me the answer to that card ")
+        my_card = flash_cards(question,answer)
+        print(my_card.display())
+
+        # Load existing data
+        try:
+            with open("cards.json", "r") as file:
+                cards_data = json.load(file)
+        except FileNotFoundError:
+            cars_data = []
+
+        # Append new car
+        cards_data.append(my_card.to_dict())
+
+        # Save updated data back to file
+        with open("cards.json", "w") as file:
+            json.dump(cards_data, file, indent=4)
         
-#Student Mode
+        step = input("would you like to contuine or exit ")
+        if step.lower() == "exit":
+            break
+elif mode.lower() == "student":
+    while True:
 
 
-#Teacher Mode
+
+
+
