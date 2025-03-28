@@ -10,7 +10,7 @@ class flash_cards:
         return f"{self.question} {self.answer}"
 
 
-mode = input("What mode would you like to use?")
+mode = input("What mode would you like to use? ")
 if mode.lower() == "teacher":
     while True:
 
@@ -38,11 +38,24 @@ if mode.lower() == "teacher":
             break
 elif mode.lower() == "student":
     while True:
+     x = 0
+     y= 0
      with open("cards.json", "r") as file:
             cards_data = json.load(file)
      for cards in cards_data:
          lebron = random.choice(cards['question'])
-         print(lebron)
+         guess = input(f"what matches to {lebron} ")
+         if guess == cards['answer']:
+             x += 1
+             if y % 5 == 0 and y > 0:
+                 y += 2
+             else:
+                 y+= 1
+             print(f"correct streak is {x} and your score is {y}")
+             step = input("Would you like to contuine or exit ")
+             if step.lower() == "exit":
+                 break
+
 
 
 
