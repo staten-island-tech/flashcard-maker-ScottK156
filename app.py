@@ -1,5 +1,5 @@
 import json
-
+import random
 class flash_cards:
     def __init__(self,question,answer):
         self.question = question
@@ -21,8 +21,8 @@ if mode.lower() == "teacher":
 
         # Load existing data
         try:
-            with open("cards.json", "r") as file:
-                cards_data = json.load(file)
+                with open("cards.json", "r") as file:
+                    cards_data = json.load(file)
         except FileNotFoundError:
             cars_data = []
 
@@ -38,6 +38,11 @@ if mode.lower() == "teacher":
             break
 elif mode.lower() == "student":
     while True:
+     with open("cards.json", "r") as file:
+            cards_data = json.load(file)
+     for cards in cards_data:
+         lebron = random.choice(cards['question'])
+         print(lebron)
 
 
 
