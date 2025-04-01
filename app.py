@@ -1,5 +1,4 @@
 import json
-import random
 class flash_cards:
     def __init__(self,question,answer):
         self.question = question
@@ -43,7 +42,7 @@ elif mode.lower() == "student":
      with open("cards.json", "r") as file:
             cards_data = json.load(file)
      for cards in cards_data:
-         lebron = random.choice(cards['question'])
+         lebron = (cards['question'])
          guess = input(f"what matches to {lebron} ")
          if guess == cards['answer']:
              x += 1
@@ -55,6 +54,14 @@ elif mode.lower() == "student":
              step = input("Would you like to contuine or exit ")
              if step.lower() == "exit":
                  break
+         else:
+             print("incorrect")
+             x = 0
+             step = input("Would you like to contuine or exit ")
+             if step.lower() == "exit":
+                 break
+     break
+
 
 
 
