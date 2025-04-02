@@ -60,7 +60,9 @@ elif mode.lower() == "student":
              step = input("Would you like to contuine or exit ")
              if step.lower() == "exit":
                  break
+     print(f"your final score was {y}")
      break
+
 
 
 
