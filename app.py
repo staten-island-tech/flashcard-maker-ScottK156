@@ -66,10 +66,6 @@ class teacher:
     def __init__(self,key,value):
         self.key = key
         self.value = value
-    def pair(key,value):
-        key = input("What is the word")
-        value = input("what is the answer")
-        my_card = flash_cards(key,value)
     def to_file(key,value):
          # Load existing data
         try:
@@ -84,7 +80,23 @@ class teacher:
         # Save updated data back to file
         with open("cards.json", "w") as file:
             json.dump(cards_data, file, indent=4)
-mode =input
+class student:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+    def game(key,value):
+        
+mode =input("what role do you want to use? ")
+if mode.lower() == "teacher":
+ while True : 
+        key = input("Give me a word ")
+        value = input("Give me the answer ")
+        my_card = flash_cards(key,value)
+        teacher.to_file(key,value)
+        step = input("continue or exit ")
+        if step.lower() == "exit":
+            break
+
 
 
 
