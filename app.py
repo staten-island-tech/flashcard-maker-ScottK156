@@ -84,7 +84,26 @@ class student:
     def __init__(self, key, value):
         self.key = key
         self.value = value
-    def game(key,value):
+    def game():
+         x = 0
+         y = 0
+         for cards in cards_data:
+             lebron = (cards["question"])
+             guess = input(f"what matches to {lebron}? ")
+             if guess.lower() == cards["answer"]:
+                 x += 1
+                 if y % 5 == 0 and y > 0:
+                     y += 2
+                 else:
+                     y += 1
+             else:
+                 print("incorrect") 
+             print(f"Score:{y} Streak:{x}")
+             step = input("exit or continue ")
+             if step.lower() == "exit":
+                 print(f"Final Score: {y}")
+                 break
+    
         
 mode =input("what role do you want to use? ")
 if mode.lower() == "teacher":
@@ -96,6 +115,15 @@ if mode.lower() == "teacher":
         step = input("continue or exit ")
         if step.lower() == "exit":
             break
+elif mode.lower() == "student":
+     with open("cards.json", "r") as file:
+         cards_data = json.load(file)
+     while True:
+        student.game()
+        break
+
+
+
 
 
 
